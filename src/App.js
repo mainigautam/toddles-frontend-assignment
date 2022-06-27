@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React , {useState,useEffect} from "react";
+import Header from "./Components/Header";
+import Profile from "./Components/Profile";
+import TabSection from "./Components/TabSection";
+import MockDB from './MockDB/MockDB.json'
+import './Styles/App.css'
 function App() {
+  const [list,setList] = useState(MockDB);
+  const [dummyUpdate,setDummyUpdate] = useState(false);
+  const handleRender = () => {
+    setDummyUpdate(!dummyUpdate);
+  };
+  useEffect(()=>{
+
+  },[dummyUpdate])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header data={list} setList={setList}/>
+      <Profile data={list} setList={setList}/>
+      <TabSection data={list} setList={setList} handleRender={handleRender}/>
+    </>
   );
 }
 
