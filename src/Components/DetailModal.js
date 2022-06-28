@@ -13,12 +13,12 @@ const DetailModal = ({handleModal,modalOpen,updateEntry,modalData,modalIndex}) =
     "subheading" : subHeading,
     "desc":description
   };
-  console.log(heading)
-  console.log(startDate)
-  console.log(endDate)
-  console.log(subHeading)
-  console.log(description)
-  console.log(newRecord)
+  // console.log(heading)
+  // console.log(startDate)
+  // console.log(endDate)
+  // console.log(subHeading)
+  // console.log(description)
+  // console.log(newRecord)
   return (
     <div className={`detail-modal-blur ${modalOpen?"":"hide"}`}>
       <div className="detail-modal">
