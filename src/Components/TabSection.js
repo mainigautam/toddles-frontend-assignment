@@ -38,7 +38,7 @@ const TabSection = ({data,setList,handleRender}) => {
           mediaSelection={mediaSelection}
           setMediaSelection={setMediaSelection}
           index={'achievements'}
-          btnTitle={"Achievements"}
+          btnTitle={"Projects"}
           data={data}
         />
       </div>
