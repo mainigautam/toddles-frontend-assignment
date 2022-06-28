@@ -28,6 +28,8 @@ const DetailModal = ({
     setStartDate(null);
     setDescription(null);
     handleModal();
+    document.getElementById('flush').click();
+    
   };
   return (
     <div className={`detail-modal-blur ${modalOpen ? "" : "hide"}`}>
@@ -122,6 +124,7 @@ const DetailModal = ({
           >
             Cancel
           </button>
+          <button type="reset" id="flush" hidden></button>
         </div>
       </form>
     </div>
