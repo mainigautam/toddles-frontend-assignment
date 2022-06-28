@@ -1,33 +1,38 @@
-import React , {useState} from "react";
+import React, { useState } from "react";
 import TabDetail from "./TabDetail";
-import DetailModal from './DetailModal'
-const Tab = ({
-  mediaSelection,
-  data,
-  setList,
-  handleRender,
-  addData
-}) => {
-  const [modalOpen,setModalOpen] = useState(false)
-  const [modalData,setModalData] = useState({
-    "heading": "",
-    "start_date": "",
-    "end_date": "",
-    "subheading" :  "",
-    "desc":""
-  })
-  const [modalIndex,setModalIndex]=useState(null);
-  const handleModal=(record,index)=>{
+import DetailModal from "./DetailModal";
+const Tab = ({ mediaSelection, data, setList, handleRender, addData }) => {
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({
+    heading: "",
+    start_date: "",
+    end_date: "",
+    subheading: "",
+    desc: "",
+  });
+  const [modalIndex, setModalIndex] = useState(null);
+  const handleModal = (record, index) => {
+    setModalOpen(!modalOpen);
+    setModalData({
+      heading: "",
+      start_date: "",
+      end_date: "",
+      subheading: "",
+      desc: "",
+    });
+    setModalIndex(null);
+  };
+  const editModal = (record, index) => {
     setModalOpen(!modalOpen);
     setModalIndex(index);
     setModalData(record);
-  }
-  const updateEntry= (newRecord,index) =>{
-    data[0][mediaSelection].splice(index,1);
-    data[0][mediaSelection].splice(index,0, newRecord);
+  };
+  const updateEntry = (newRecord, index) => {
+    data[0][mediaSelection].splice(index, 1);
+    data[0][mediaSelection].splice(index, 0, newRecord);
     handleRender();
     handleModal();
-  }
+  };
   const deleteRecord = (index) => {
     data[0][mediaSelection].splice(index, 1);
     setList(data);
@@ -35,7 +40,14 @@ const Tab = ({
   };
   return (
     <div className="tab-card">
-      <button className="tab-add-btn" onClick={()=>{handleModal(modalData,0)}}>Add New</button>
+      <button
+        className="tab-add-btn"
+        onClick={() => {
+          handleModal(modalData, 0);
+        }}
+      >
+        Add New
+      </button>
       {data[0][mediaSelection].map((record, key) => {
         return (
           <TabDetail
@@ -47,7 +59,7 @@ const Tab = ({
             tabDesc={record.desc}
             mediaSelection={mediaSelection}
             deleteRecord={deleteRecord}
-            handleModal={handleModal}
+            handleModal={editModal}
             modalOpen={modalOpen}
             updateEntry={updateEntry}
             key={key}
@@ -55,7 +67,14 @@ const Tab = ({
           />
         );
       })}
-      <DetailModal modalOpen={modalOpen} handleModal={handleModal} updateEntry={updateEntry} modalData={modalData} modalIndex={modalIndex}/>
+      <DetailModal
+        modalOpen={modalOpen}
+        handleModal={handleModal}
+        updateEntry={updateEntry}
+        modalData={modalData}
+        modalIndex={modalIndex}
+        addData={addData}
+      />
     </div>
   );
 };
