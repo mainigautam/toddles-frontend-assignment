@@ -35,7 +35,7 @@ const Tab = ({
   };
   return (
     <div className="tab-card">
-      <button className="tab-add-btn" onClick={()=>{addData()}}>Add New</button>
+      <button className="tab-add-btn" onClick={()=>{handleModal(modalData,0)}}>Add New</button>
       {data[0][mediaSelection].map((record, key) => {
         return (
           <TabDetail
