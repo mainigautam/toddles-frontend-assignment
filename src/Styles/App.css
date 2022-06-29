@@ -57,3 +57,26 @@
 .modal-col-input{
   width: 100%;
 }
+@media only screen and (max-width: 600px) {
+ .profile-container{
+  flex-direction: column;
+  height: 100%;
+ }
+ .tab-card{
+  width: 90%;
+ }
+ .tab-button-text{
+  text-overflow: ellipsis;
+  overflow: hidden;
+ }
+ .info-area{
+  margin: auto;
+  width: 90%;
+ }
+ .upload-area{
+  margin:15px auto;
+ }
+ .detail-modal{
+  width: 80%;
+ }
+}
